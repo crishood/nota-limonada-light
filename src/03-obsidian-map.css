@@ -1,0 +1,75 @@
+/* ============================================================
+   Obsidian variable map — per Theme guidelines
+   (https://docs.obsidian.md/Themes/App+themes/Theme+guidelines):
+   "Override general variables under body, and colors under
+   .theme-light or .theme-dark." This file does exactly that, reading
+   from the --lds-* tokens defined in 02-tokens.css.
+
+   Light-only by design (the system forbids a dark theme: "prefiero
+   temas claros, la luz siempre, no la sombra" — CLAUDE.md raíz). No
+   .theme-dark block exists anywhere in this theme; switching to dark
+   falls back to Obsidian's own default, which is the documented,
+   supported way to ship a light-only theme (31 of 662 community
+   themes do this today).
+   ============================================================ */
+
+body {
+  /* Radii — square corners, kept from v1 */
+  --radius-s: 0px;
+  --radius-m: 0px;
+  --radius-l: 0px;
+  --input-radius: 0px;
+  --tab-radius-active: 0px;
+  --checkbox-radius: 0px;
+  --toggle-radius: 0px;
+  --toggle-thumb-radius: 0px;
+  --slider-thumb-radius: 0px;
+
+  /* Typography — families */
+  --font-text-theme: var(--lds-font-body);
+  --font-interface-theme: var(--lds-font-display);
+  --font-monospace-theme: var(--lds-font-mono);
+
+  /* Accent — Verde Basílica, decomposed to HSL parts the way Obsidian
+     composes --color-accent internally. The base stays true to the
+     hex (dark, on purpose — it's the system's primary), but every
+     *-hover token below points to --lds-basilica-green-light-1
+     instead of a dark-* shade: confirmed in the visual pass
+     (03/08/2026) that darkening an already-dark green on hover read
+     as almost black — hover should lighten, not deepen. */
+  --accent-h: 151;
+  --accent-s: 34%;
+  --accent-l: 18%;
+
+  /* Reading measure — the system's own 65ch rule for body copy */
+  --file-line-width: 42rem; /* ≈ 65ch at 16px Libre Baskerville */
+  --line-height-normal: 1.6;
+}
+
+.theme-light {
+  --background-primary: var(--lds-paper);
+  --background-primary-alt: var(--lds-corn-silk-light-1);
+  --background-secondary: var(--lds-corn-silk-light-1);
+  --background-secondary-alt: var(--lds-corn-silk-dark-1);
+  --background-modifier-border: var(--lds-corn-silk-dark-1);
+  --background-modifier-border-hover: var(--lds-corn-silk-dark-2);
+  --background-modifier-border-focus: var(--lds-basilica-green);
+
+  --text-normal: var(--lds-ink);
+  --text-muted: var(--lds-carbon-green-light-2);
+  --text-faint: var(--lds-carbon-green-light-3);
+  --text-accent: var(--lds-basilica-green);
+  --text-accent-hover: var(--lds-basilica-green-light-1);
+  --text-on-accent: var(--lds-text-on-primary);
+  --text-selection: rgba(184, 146, 63, 0.25); /* gold, translucent — the one sanctioned background use */
+  --text-error: var(--lds-error);
+  --text-success: var(--lds-success);
+  --text-warning: var(--lds-warning);
+
+  --interactive-normal: var(--lds-corn-silk-light-1);
+  --interactive-hover: var(--lds-corn-silk-dark-1);
+  --interactive-accent: var(--lds-basilica-green);
+  --interactive-accent-hover: var(--lds-basilica-green-light-1);
+
+  --titlebar-background-focused: var(--lds-corn-silk-light-1);
+}

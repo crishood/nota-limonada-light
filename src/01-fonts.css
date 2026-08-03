@@ -1,0 +1,65 @@
+/* ============================================================
+   Fonts — limonada-ds type pairing, self-hosted.
+   Obsidian's Developer policies forbid a theme loading remote assets
+   (no @import to Google Fonts, no network requests at all — see
+   Developer policies: "Themes may not load assets from the network").
+   These url("fonts/...") references are placeholders: build.mjs reads
+   each file from fonts/ and inlines it as a base64 data URI before
+   this ships as theme.css. Never hand-edit theme.css directly — edit
+   here and re-run the build.
+
+   Libre Franklin ships as ONE variable-font file (weight 500–900,
+   `font-weight: 500 900` range syntax) instead of six static files —
+   confirmed available from the Google Fonts API, see
+   limonada-ds/code/Font-face y self-hosting.md for the static-file
+   fallback if a variable range ever causes trouble in Obsidian's
+   renderer.
+   ============================================================ */
+
+/* Libre Franklin — display/heading voice, variable 500–900 */
+@font-face {
+  font-family: "Libre Franklin";
+  src: url("fonts/libre-franklin/libre-franklin-variable-500-900-normal.woff2") format("woff2");
+  font-weight: 500 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Libre Baskerville — body/reading voice */
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url("fonts/libre-baskerville/libre-baskerville-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url("fonts/libre-baskerville/libre-baskerville-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url("fonts/libre-baskerville/libre-baskerville-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Fira Mono — technical voice. No italic exists for this family. */
+@font-face {
+  font-family: "Fira Mono";
+  src: url("fonts/fira-mono/fira-mono-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fira Mono";
+  src: url("fonts/fira-mono/fira-mono-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

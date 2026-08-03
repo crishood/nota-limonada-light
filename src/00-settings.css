@@ -1,0 +1,44 @@
+/* @settings
+
+name: Nota Limonada Light
+id: nota-limonada-light
+settings:
+    -
+        id: nota-limonada-heading
+        title: Nota Limonada Light
+        description: limonada-ds — verde de Basílica, Libre Franklin/Baskerville/Fira Mono
+        type: heading
+        level: 1
+        collapsed: false
+    -
+        id: font-text-size
+        title: Tamaño de lectura
+        description: Tamaño del cuerpo del texto.
+        type: variable-number-slider
+        default: 16
+        min: 14
+        max: 22
+        step: 1
+        format: px
+    -
+        id: file-line-width
+        title: Ancho de línea
+        description: Ancho máximo de la columna de lectura (regla de 65ch del sistema).
+        type: variable-number-slider
+        default: 42
+        min: 30
+        max: 60
+        step: 2
+        format: rem
+    -
+        id: lds-film-grain
+        title: Grano de película
+        description: Textura de grano sobre la superficie de lectura — herramienta de profundidad del sistema desde la sesión de color.
+        type: class-toggle
+    -
+        id: lds-grid-background
+        title: Retícula de fondo
+        description: Cuadrícula hairline detrás del editor (la "mesa de corte" de demo.html, aparcada como opción, no como default).
+        type: class-toggle
+
+*/

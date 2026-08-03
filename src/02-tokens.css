@@ -1,0 +1,84 @@
+/* ============================================================
+   Tokens — limonada-ds palette "Verde de Basílica", verbatim from
+   limonada-ds/code/Tokens de color.md and limonada-ds/colors/Dirección
+   de color.md. These are the system's own custom properties, kept
+   under their own names so 03-obsidian-map.css can map them onto
+   Obsidian's variables without duplicating hex values anywhere.
+
+   HARD RULES inherited from the system (do not violate when editing):
+   - No pure white / pure black as structural color.
+   - No dark theme — .theme-dark is intentionally left unstyled below.
+   - No gradients. Depth comes from grain (feTurbulence data URI) and
+     backdrop-filter blur only, both added in 05-components.css /
+     06-chrome.css where relevant.
+   - Gold is never a background, never body text — thin lines and
+     isolated devotional detail only.
+   ============================================================ */
+
+body {
+  /* Five structural colors — the only structural colors in the system */
+  --lds-basilica-green: #1E3D2E;
+  --lds-gold: #B8923F;
+  --lds-corn-silk: #FDF7D9;
+  --lds-carbon-green: #161F1A;
+  --lds-patina-green: #5B7B6C;
+  --lds-off-white: #FEFBEC; /* lightest Corn Silk tint — kept distinct from paper on purpose */
+
+  /* Support shades (decorative only — never page background, never body text) */
+  --lds-basilica-green-light-1: #566E62;
+  --lds-basilica-green-light-2: #8E9E96;
+  --lds-basilica-green-light-3: #C7CECB;
+  --lds-basilica-green-dark-1: #162E22;
+  --lds-basilica-green-dark-2: #0F1E17;
+  --lds-basilica-green-dark-3: #080F0C;
+
+  --lds-gold-light-1: #CAAD6F;
+  --lds-gold-light-2: #DCC89F;
+  --lds-gold-light-3: #EDE4CF;
+  --lds-gold-dark-1: #8A6E2F;
+  --lds-gold-dark-2: #5C4920;
+  --lds-gold-dark-3: #2E2410;
+
+  --lds-corn-silk-light-1: #FEF9E2;
+  --lds-corn-silk-light-2: #FEFBEC;
+  --lds-corn-silk-light-3: #FEFDF6;
+  --lds-corn-silk-dark-1: #BEB9A3; /* hairline / grid-background stroke */
+  --lds-corn-silk-dark-2: #7E7C6C;
+  --lds-corn-silk-dark-3: #3F3E36;
+
+  --lds-carbon-green-light-1: #505753;
+  --lds-carbon-green-light-2: #8A8F8C;
+  --lds-carbon-green-light-3: #C5C7C6;
+  --lds-carbon-green-dark-1: #0F1612;
+  --lds-carbon-green-dark-2: #090C0A;
+
+  --lds-patina-green-light-1: #849C91;
+  --lds-patina-green-light-2: #ADBDB6;
+  --lds-patina-green-light-3: #D6DEDA;
+  --lds-patina-green-dark-1: #445C51;
+  --lds-patina-green-dark-2: #2E3E36;
+  --lds-patina-green-dark-3: #171F1B;
+
+  /* Liturgical alert colors — always background:fill + color:solid, never reversed */
+  --lds-success: #4C6B3A;
+  --lds-success-fill: #E4EAD8;
+  --lds-warning: #5B4570;
+  --lds-warning-fill: #E8DEE8;
+  --lds-error: #7A2E28;
+  --lds-error-fill: #F1DEDA;
+  --lds-info: var(--lds-patina-green);
+  --lds-info-fill: var(--lds-patina-green-light-3);
+
+  /* Semantic role tokens — reach for these, not the raw palette above */
+  --lds-paper: var(--lds-corn-silk);
+  --lds-ink: var(--lds-carbon-green);
+  --lds-surface-primary: var(--lds-basilica-green);
+  --lds-text-on-primary: var(--lds-off-white);
+  --lds-surface-secondary: var(--lds-patina-green);
+  --lds-accent: var(--lds-gold);
+
+  /* Type families */
+  --lds-font-display: "Libre Franklin", sans-serif;
+  --lds-font-body: "Libre Baskerville", serif;
+  --lds-font-mono: "Fira Mono", monospace;
+}

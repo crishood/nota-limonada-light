@@ -1,0 +1,143 @@
+/* ============================================================
+   Reading components — callouts, code, tables, tags, properties,
+   links, lists, images. Applies the system's closed drawing rules
+   (limonada-ds/layout/Reglas de borde y grid.md):
+     1. Panels are distinguished by fill, not by a frame — callouts
+        and code blocks carry no border.
+     2. Grid lines are drawn by gap, never by cell borders — tables
+        use border-spacing on an ink background, not per-cell borders.
+     4. A photo never carries a border, never rotates.
+   ============================================================ */
+
+/* ---- Callouts: liturgical alert colors, remapped by group.
+   Obsidian composes each callout's tint/icon from --callout-color (an
+   "R, G, B" triple), so remapping that triple is enough — no border
+   override needed, callouts are already fill-first by default. ---- */
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"],
+.callout[data-callout="tip"],
+.callout[data-callout="hint"],
+.callout[data-callout="important"] {
+  --callout-color: 76, 107, 58; /* --lds-success */
+}
+.callout[data-callout="warning"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"] {
+  --callout-color: 91, 69, 112; /* --lds-warning */
+}
+.callout[data-callout="failure"],
+.callout[data-callout="fail"],
+.callout[data-callout="missing"],
+.callout[data-callout="danger"],
+.callout[data-callout="error"],
+.callout[data-callout="bug"] {
+  --callout-color: 122, 46, 40; /* --lds-error */
+}
+.callout[data-callout="note"],
+.callout[data-callout="info"],
+.callout[data-callout="abstract"],
+.callout[data-callout="summary"],
+.callout[data-callout="tldr"],
+.callout[data-callout="todo"],
+.callout[data-callout="question"],
+.callout[data-callout="help"],
+.callout[data-callout="faq"],
+.callout[data-callout="example"],
+.callout[data-callout="quote"],
+.callout[data-callout="cite"] {
+  --callout-color: 91, 123, 108; /* --lds-info / patina */
+}
+.callout {
+  border: none;
+  border-radius: 0;
+}
+.callout-title {
+  font-family: var(--lds-font-display);
+  font-weight: 700;
+}
+
+/* ---- Code: filled, not framed ---- */
+body {
+  --code-background: var(--lds-corn-silk-light-1);
+  --code-normal: var(--lds-ink);
+  --code-comment: var(--lds-carbon-green-light-2);
+  --code-radius: 0px;
+}
+code,
+pre {
+  border: none;
+  box-shadow: none;
+}
+
+/* ---- Tables ----
+   The system's rule elsewhere is "retícula por gap, nunca por borde de
+   celda" — a dark table background peeking through a 1px
+   border-spacing gap. That relies on `border-collapse: separate`,
+   which Obsidian's own table CSS in Reading View forces back to
+   `collapse` (confirmed 03/08/2026: the intended 1px hairline gap
+   rendered as a solid dark fill instead, since collapse leaves the
+   background layer with nothing to peek through around). Table is the
+   one component where the gap technique doesn't survive Obsidian's
+   renderer, so it falls back to a plain 1px hairline border per cell
+   instead — still thin and quiet, just not the gap trick. */
+table {
+  border-collapse: collapse;
+  background: var(--lds-paper);
+}
+th,
+td {
+  border: 1px solid var(--lds-corn-silk-dark-1);
+  background: var(--lds-paper);
+  padding: 0.4rem 0.75rem;
+}
+thead th {
+  background: var(--lds-corn-silk-light-1);
+  font-family: var(--lds-font-display);
+  font-weight: 700;
+}
+
+/* ---- Tags: a label, not a pill — reads as a caption, not a button ---- */
+body {
+  --tag-color: var(--lds-basilica-green);
+  --tag-color-hover: var(--lds-text-on-primary);
+  --tag-background: var(--lds-corn-silk-light-1);
+  --tag-background-hover: var(--lds-basilica-green);
+  --tag-border-color: var(--lds-corn-silk-dark-1);
+  --tag-border-color-hover: var(--lds-basilica-green);
+  --tag-radius: 0px;
+}
+
+/* ---- Properties (frontmatter) ---- */
+body {
+  --metadata-label-font: var(--lds-font-mono);
+  --metadata-input-font: var(--lds-font-body);
+  --metadata-label-text-color: var(--lds-carbon-green-light-1);
+}
+
+/* ---- Links ---- */
+body {
+  --link-color: var(--lds-basilica-green);
+  --link-color-hover: var(--lds-basilica-green-light-1);
+  --link-decoration: none;
+  --link-decoration-hover: underline;
+  --link-external-color: var(--lds-basilica-green);
+  --link-external-color-hover: var(--lds-basilica-green-light-1);
+  --link-unresolved-color: var(--lds-error);
+  --link-unresolved-decoration-color: var(--lds-error-fill);
+}
+
+/* ---- Lists & rule ---- */
+body {
+  --list-marker-color: var(--lds-patina-green);
+  --hr-color: var(--lds-corn-silk-dark-1);
+  --hr-thickness: 1px;
+}
+
+/* ---- Images: never a frame, never rotated (photo rule, rule 4) ---- */
+img {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  transform: none;
+}

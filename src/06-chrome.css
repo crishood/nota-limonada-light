@@ -1,0 +1,94 @@
+/* ============================================================
+   Chrome — sidebars, ribbon, status bar, tabs, and small interface
+   polish carried over from v1. No negative (inverted) surfaces here:
+   the system requires light to always predominate, so persistent UI
+   chrome never goes dark — that would read as a de facto dark theme,
+   which this system forbids.
+   ============================================================ */
+
+/* ---- Carried over from v1: square, mitered joins on Obsidian's own
+   icon set, so the hard-corner aesthetic (--radius-*: 0) reaches SVG
+   icons too, not just boxes. ---- */
+svg * {
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  rx: 0;
+  ry: 0;
+}
+
+/* ---- Carried over from v1: tighter, quieter menus ---- */
+.menu {
+  padding: var(--size-2-1);
+}
+.menu-item {
+  padding: var(--size-4-1) var(--size-4-2);
+}
+.menu-separator {
+  margin: var(--size-2-1) calc(var(--size-2-1) * -1);
+}
+
+/* ---- Carried over from v1: no glow/underline pseudo-elements on the
+   active tab — the tab's own background is enough of a signal. ---- */
+.workspace-tab-header.is-active::before,
+.workspace-tab-header.is-active::after {
+  display: none;
+}
+
+/* ---- Sidebars & navigation ---- */
+body {
+  --nav-item-color: var(--lds-carbon-green-light-1);
+  --nav-item-color-hover: var(--lds-ink);
+  --nav-item-color-active: var(--lds-text-on-primary);
+  --nav-item-background-hover: var(--lds-corn-silk-dark-1);
+  --nav-item-background-active: var(--lds-basilica-green);
+  --nav-collapse-icon-color: var(--lds-carbon-green-light-1);
+}
+
+/* ---- Ribbon ---- */
+body {
+  --ribbon-background: var(--lds-corn-silk-light-1);
+  --ribbon-background-collapsed: var(--lds-corn-silk-light-1);
+  --icon-color: var(--lds-carbon-green-light-1);
+  --icon-color-hover: var(--lds-ink);
+  --icon-color-active: var(--lds-basilica-green);
+}
+
+/* ---- Status bar ---- */
+body {
+  --status-bar-background: var(--lds-corn-silk-light-1);
+  --status-bar-text-color: var(--lds-carbon-green-light-1);
+}
+
+/* ---- Tabs ---- */
+body {
+  --tab-background-active: var(--lds-paper);
+  --tab-text-color: var(--lds-carbon-green-light-1);
+  --tab-text-color-active: var(--lds-ink);
+  --tab-text-color-focused-active: var(--lds-ink);
+  --tab-outline-color: var(--lds-corn-silk-dark-1);
+}
+
+/* ============================================================
+   Depth toggles — driven by the Style Settings block in
+   00-settings.css. Off by default; each is a class-toggle on <body>.
+   Both reuse the flat feTurbulence/mesh SVG data-URI technique from
+   limonada-ds/code/demo.html (never a gradient — see the system's
+   "no gradients" rule).
+   ============================================================ */
+
+/* Film grain over the note's reading surface */
+body.lds-film-grain .view-content {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-blend-mode: multiply;
+  background-size: 160px 160px;
+}
+
+/* Hairline grid backdrop, the "mesa de corte" tile from demo.html —
+   parked here as an opt-in atmosphere, per the decision in
+   limonada-ds/code/demo.html to keep .mesa-corte available for a
+   future grid-driven surface. */
+body.lds-grid-background .markdown-source-view.mod-cm6 .cm-sizer,
+body.lds-grid-background .markdown-reading-view .markdown-preview-sizer {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M48 0H0v48' fill='none' stroke='%23BEB9A3' stroke-width='1'/%3E%3C/svg%3E");
+  background-position: center top;
+}
